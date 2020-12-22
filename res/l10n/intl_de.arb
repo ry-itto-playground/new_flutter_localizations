@@ -1,0 +1,5 @@
+{
+  "@@locale": "de",
+  "introNewKey": "Während des Imports erstellte neue Keys können automatisch mit einem Tag versehen werden, sodass Manager und Übersetzer wissen, welche Keys keine Übersetzung haben.",
+  "@introNewKey": {}
+}

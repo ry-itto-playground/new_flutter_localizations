@@ -1,0 +1,5 @@
+{
+  "@@locale": "en",
+  "introNewKey": "New keys created during import can be auto-tagged so that managers and translators know what keys miss translation.",
+  "@introNewKey": {}
+}
