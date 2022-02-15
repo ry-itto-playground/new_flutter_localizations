@@ -29,7 +29,7 @@ GEM
       flutter_analyze_parser (~> 0.1.2)
     danger-plugin-api (1.0.0)
       danger (> 2.0)
-    faraday 1.9.3)
+    faraday (1.9.3)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -80,6 +80,7 @@ GEM
     unicode-display_width (2.1.0)
 
 PLATFORMS
+  ruby
   x86_64-darwin-20
   x86_64-linux
 
