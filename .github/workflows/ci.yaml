@@ -29,7 +29,7 @@ jobs:
         run: | 
           fvm install
           find .fvm/flutter_sdk/ -maxdepth 4 -path "*/bin/*"
-          echo "$(pwd)/.fvm/flutter_sdk" >> $GITHUB_PATH
+          echo "$(readlink .fvm/flutter_sdk)" >> $GITHUB_PATH
           fvm flutter analyze > flutteranalyze_report.txt
       - name: Run Danger
         run: |
