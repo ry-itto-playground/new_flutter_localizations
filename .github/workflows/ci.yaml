@@ -30,7 +30,7 @@ jobs:
           fvm install
           find .fvm/flutter_sdk/ -maxdepth 4 -path "*/bin/*"
           echo "$(readlink .fvm/flutter_sdk)/bin" >> $GITHUB_PATH
-          fvm flutter analyze > flutteranalyze_report.txt
+          fvm flutter analyze > flutter_analyze_report.txt
       - name: Run Danger
         run: |
           bundle exec danger
