@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: fvm cache 
+        uses: actions/cache@v2.1.7
+        with:
+          path: $HOME/fvm/versions
+          key: ${{ runner.os }}-${{ hashFiles('**/fvm_config.json') }}
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+          bundler-cache: true
+      - name: run realpath
+        run: realpath .
+      - uses: dart-lang/setup-dart@v1
+      - name: Setup fvm
+        run: | 
+          dart pub global activate fvm
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+          fvm --version
+      - name: Run flutter analyze
+        run: | 
+          fvm install
+          find .fvm/flutter_sdk/ -maxdepth 4 -path "*/bin/*"
+          echo "$(readlink .fvm/flutter_sdk)/bin" >> $GITHUB_PATH
+          fvm flutter analyze > flutter_analyze_report.txt
+      - name: Run Danger
+        run: |
+          bundle exec danger
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
