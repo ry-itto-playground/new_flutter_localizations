@@ -19,6 +19,8 @@ jobs:
         with:
           ruby-version: 3.0.2
           bundler-cache: true
+      - name: run realpath
+        run: realpath .
       - uses: dart-lang/setup-dart@v1
       - name: Setup fvm
         run: | 
